@@ -6,5 +6,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'exercise3';
+  title = 'exercise3: Directives';
+
+  isDisplay = false;
+
+  logs: string[] = [];
+
+  onToggle() {
+    this.isDisplay = !this.isDisplay;
+    this.logs.push(new Date().toString());
+  }
 }

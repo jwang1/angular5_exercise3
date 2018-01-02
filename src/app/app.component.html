@@ -5,15 +5,16 @@
   </h1>
 </div>
 
+<hr>
+
 <button (click)="onToggle()">Display Detail</button>
+
+<hr>
 
 <p *ngIf="isDisplay">Secret passcode = nerd</p>
 
-<div *ngFor="let log of logs; let i = index"
-     [ngStyle]="{backgroundColor: i >= 4 ? 'blue' : 'transparent'}"
-     [ngClass]="{moreThanFive: i >= 4}"
->{{ i }}: {{ log }}
-</div>
+<exercise3-log-message *ngFor="let log of logs; let i = index" [logMsg]="log"></exercise3-log-message>
 
+<hr>
 
 

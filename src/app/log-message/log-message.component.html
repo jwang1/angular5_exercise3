@@ -1,0 +1,6 @@
+
+<div
+  [ngStyle]="{backgroundColor: logMsg.id >= 5 ? 'blue' : 'transparent'}"
+  [ngClass]="{fiveAndBeyond: logMsg.id >= 5}">
+  {{logMsg.id}}: {{logMsg.message}}
+</div>

@@ -17,6 +17,8 @@ export class AppComponent {
 
   childComponentVal = '';
 
+  childComponentValLong = '';
+
   onToggle() {
     this.id++;
     this.isDisplay = !this.isDisplay;
@@ -25,5 +27,9 @@ export class AppComponent {
 
   callback(checkOutputChildComponentInput: string) {
     this.childComponentVal = checkOutputChildComponentInput;
+  }
+
+  checkChildComponentBtnClick($event: { clickCtn: number; time: Date; info: string }) {
+    this.childComponentValLong = 'clicked : ' + $event.clickCtn + '; information: ' + $event.info + '; time: ' + $event.time;
   }
 }

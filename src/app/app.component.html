@@ -19,7 +19,10 @@
 
 <p>Child component exercise3-check-output has @Output emit event</p>
 
-<exercise3-check-output (onCheckOutputChange)="callback($event)"></exercise3-check-output>
+<exercise3-check-output
+  (onCheckOutputChange)="callback($event)"
+  (onButtonClickedEmitter)="checkChildComponentBtnClick($event)"
+></exercise3-check-output>
 
 <hr>
 
@@ -29,4 +32,8 @@
    {{ childComponentVal }}</div>
 
 <hr>
+
+<p>Server gets child component, via child-component's button click:</p>
+
+<div>{{ childComponentValLong }}</div>
 

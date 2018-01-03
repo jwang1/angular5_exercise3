@@ -17,4 +17,16 @@
 
 <hr>
 
+<p>Child component exercise3-check-output has @Output emit event</p>
+
+<exercise3-check-output (onCheckOutputChange)="callback($event)"></exercise3-check-output>
+
+<hr>
+
+<p>Server gets the child component exercise3-check-output via @Output emitter</p>
+<div>Value from child-component <br/>
+  (which is populated in parent-component's callback($event) where @Output('onCheckOutputChange): <br/><br>
+   {{ childComponentVal }}</div>
+
+<hr>
 

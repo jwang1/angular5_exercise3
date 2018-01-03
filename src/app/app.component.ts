@@ -15,9 +15,15 @@ export class AppComponent {
 
   logs: LogMessage[] = [];
 
+  childComponentVal = '';
+
   onToggle() {
     this.id++;
     this.isDisplay = !this.isDisplay;
     this.logs.push(new LogMessage(this.id, new Date().toString()));
+  }
+
+  callback(checkOutputChildComponentInput: string) {
+    this.childComponentVal = checkOutputChildComponentInput;
   }
 }

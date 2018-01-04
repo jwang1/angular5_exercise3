@@ -11,7 +11,19 @@
 
 <hr>
 
-<p *ngIf="isDisplay">Secret passcode = nerd</p>
+<p *ngIf="isDisplay" #secretPwd>Secret passcode = nerd</p>
+
+<hr>
+
+<label for="ipt">Practice Template Local Variable.</label>
+
+<input id="ipt" type="text" #input1>
+
+<button (click)="useTemplateLocalVariable(input1)">Expose Template Local Variable</button>
+<div>Expose the Template Local Variable: <b>{{ holdTemplateLocalVarVal }}</b></div>
+
+<hr>
+
 
 <exercise3-log-message *ngFor="let log of logs; let i = index" [logMsg]="log"></exercise3-log-message>
 

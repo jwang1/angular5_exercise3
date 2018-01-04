@@ -19,6 +19,8 @@ export class AppComponent {
 
   childComponentValLong = '';
 
+  holdTemplateLocalVarVal = '';
+
   onToggle() {
     this.id++;
     this.isDisplay = !this.isDisplay;
@@ -37,4 +39,7 @@ export class AppComponent {
     return 'values from parent component!!!!';
   }
 
+  useTemplateLocalVariable(input: HTMLInputElement) {
+    this.holdTemplateLocalVarVal = input.value;
+  }
 }

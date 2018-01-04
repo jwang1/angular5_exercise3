@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, ViewChild, OnInit } from '@angular/core';
 import { LogMessage } from './shared/log-message.model';
 
 @Component({
@@ -6,7 +6,7 @@ import { LogMessage } from './shared/log-message.model';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'exercise3: Directives';
 
   id: number = 0;
@@ -20,6 +20,13 @@ export class AppComponent {
   childComponentValLong = '';
 
   holdTemplateLocalVarVal = '';
+
+  @ViewChild('input2')
+  templateLocalVariableViaViewChild;
+
+  valTemplateLocalVariableViaViewChild = '';
+
+  valTemplateLocalVariableViaViewChild2 = '';
 
   onToggle() {
     this.id++;
@@ -42,4 +49,13 @@ export class AppComponent {
   useTemplateLocalVariable(input: HTMLInputElement) {
     this.holdTemplateLocalVarVal = input.value;
   }
+
+  checkInput() {
+    this.valTemplateLocalVariableViaViewChild = this.templateLocalVariableViaViewChild.nativeElement.value;
+  }
+
+  ngOnInit() {
+    this.valTemplateLocalVariableViaViewChild2 = this.templateLocalVariableViaViewChild.nativeElement.value;
+  }
+
 }

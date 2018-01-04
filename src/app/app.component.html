@@ -25,6 +25,17 @@
 <hr>
 
 
+<p>Local Template variable accessed via @ViewChild </p>
+
+<input type="text" #input2 (keyup)="checkInput()">
+
+<div>accessed the template local variable via @ViewChild; the value is  : from keyup binding setting-->  {{ valTemplateLocalVariableViaViewChild }}</div>
+
+<div>from ngOnInit --->  {{ valTemplateLocalVariableViaViewChild2 }}</div>
+
+<hr>
+
+
 <exercise3-log-message *ngFor="let log of logs; let i = index" [logMsg]="log"></exercise3-log-message>
 
 <hr>

@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'exercise3-check-output',
@@ -6,6 +6,9 @@ import { Component, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./check-output.component.css']
 })
 export class CheckOutputComponent {
+  @Input('fromParent')
+  public parentInput: string;
+
   @Output('onCheckOutputChange')
   public inputEmitter: EventEmitter<string> = new EventEmitter<string>();
 
@@ -21,6 +24,6 @@ export class CheckOutputComponent {
   }
 
   emitMyEvent() {
-    this.btnClickEmitter.emit({clickCtn: this.nbrClicks, time: new Date(), info: this.userInput});
+    this.btnClickEmitter.emit({clickCtn: this.nbrClicks++, time: new Date(), info: this.userInput});
   }
 }

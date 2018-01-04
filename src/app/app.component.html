@@ -22,6 +22,7 @@
 <exercise3-check-output
   (onCheckOutputChange)="callback($event)"
   (onButtonClickedEmitter)="checkChildComponentBtnClick($event)"
+  [fromParent]="logSomeInfo()"
 ></exercise3-check-output>
 
 <hr>

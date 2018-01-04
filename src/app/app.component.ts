@@ -32,4 +32,9 @@ export class AppComponent {
   checkChildComponentBtnClick($event: { clickCtn: number; time: Date; info: string }) {
     this.childComponentValLong = 'clicked : ' + $event.clickCtn + '; information: ' + $event.info + '; time: ' + $event.time;
   }
+
+  logSomeInfo(): string {
+    return 'values from parent component!!!!';
+  }
+
 }

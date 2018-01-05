@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, OnChanges, SimpleChanges} from '@angular/core';
 import {LogMessage} from '../shared/log-message.model';
 
 @Component({
@@ -6,13 +6,23 @@ import {LogMessage} from '../shared/log-message.model';
   templateUrl: './log-message.component.html',
   styleUrls: ['./log-message.component.css']
 })
-export class LogMessageComponent implements OnInit {
+export class LogMessageComponent implements OnInit, OnChanges {
   @Input()
   logMsg: LogMessage;
+
+  logMsgCheckOnChanges = '';
 
   constructor() {}
 
   ngOnInit() {
 
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    console.log(changes);
+
+    for (let obj in changes) {
+      this.logMsgCheckOnChanges += obj + ': ' +  changes[obj].currentValue.toString();
+    }
   }
 }

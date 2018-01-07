@@ -1,4 +1,4 @@
-import {Component, ViewChild, OnInit, DoCheck, AfterContentInit } from '@angular/core';
+import {Component, ViewChild, OnInit, DoCheck, AfterContentInit, AfterContentChecked } from '@angular/core';
 import { LogMessage } from './shared/log-message.model';
 
 @Component({
@@ -6,7 +6,7 @@ import { LogMessage } from './shared/log-message.model';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit, DoCheck, AfterContentInit {
+export class AppComponent implements OnInit, DoCheck, AfterContentInit, AfterContentChecked {
   title = 'exercise3: Directives';
 
   id: number = 0;
@@ -24,6 +24,8 @@ export class AppComponent implements OnInit, DoCheck, AfterContentInit {
   doCheckInfo = '';
 
   afterContentInitInfo = '';
+
+  afterContentCheckedInfo = '';
 
   @ViewChild('input2')
   templateLocalVariableViaViewChild;
@@ -69,5 +71,9 @@ export class AppComponent implements OnInit, DoCheck, AfterContentInit {
   ngAfterContentInit() {
     this.afterContentInitInfo = new Date().toTimeString();
   }
+
+  ngAfterContentChecked() {
+    this.afterContentCheckedInfo = new Date().toTimeString();
+}
 
 }

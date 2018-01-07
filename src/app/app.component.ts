@@ -1,4 +1,4 @@
-import {Component, ViewChild, OnInit } from '@angular/core';
+import {Component, ViewChild, OnInit, DoCheck } from '@angular/core';
 import { LogMessage } from './shared/log-message.model';
 
 @Component({
@@ -6,7 +6,7 @@ import { LogMessage } from './shared/log-message.model';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, DoCheck {
   title = 'exercise3: Directives';
 
   id: number = 0;
@@ -20,6 +20,8 @@ export class AppComponent implements OnInit {
   childComponentValLong = '';
 
   holdTemplateLocalVarVal = '';
+
+  doCheckInfo = '';
 
   @ViewChild('input2')
   templateLocalVariableViaViewChild;
@@ -57,5 +59,10 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.valTemplateLocalVariableViaViewChild2 = this.templateLocalVariableViaViewChild.nativeElement.value;
   }
+
+  ngDoCheck() {
+    this.doCheckInfo = new Date().toString();
+  }
+
 
 }

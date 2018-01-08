@@ -7,7 +7,7 @@
 
 <hr>
 
-<button (click)="onToggle()">Display Detail (also kick off onChanges check on @Input)</button>
+<button (click)="onToggle()" class="btn-primary">Display Detail (also kick off onChanges check on @Input)</button>
 
 <hr>
 
@@ -78,15 +78,26 @@
 
 <hr>
 
-<div>AfterViewInit: {{ afterVieInitInfo }}</div>
+<!--
+<div>AfterViewInit: {{ afterViewInitInfo }}</div>
+-->
 
 <hr>
 
+<!--
 <div>AfterViewChecked: {{ afterViewCheckedInfo }}</div>
+-->
 
 <hr>
 
+<button class="btn-danger" (click)="destroyOneLogComponent()" [disabled]="logs.length === 0"
+  title="disabled until some logs added.">Remove a log component (activate OnDestry)</button>
+
+<div class="form-control">OnDestroy : {{ onDestroyInfo }}</div>
+
 <br>
 
 <br>
+
+<hr>
 

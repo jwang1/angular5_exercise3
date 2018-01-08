@@ -1,4 +1,15 @@
-import {Component, ViewChild, OnInit, DoCheck, AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked } from '@angular/core';
+import {
+  Component,
+  ViewChild,
+  OnInit,
+  DoCheck,
+  AfterContentInit,
+  AfterContentChecked,
+  AfterViewInit,
+  AfterViewChecked
+  // OnDestroy
+} from '@angular/core';
+
 import { LogMessage } from './shared/log-message.model';
 
 @Component({
@@ -6,7 +17,7 @@ import { LogMessage } from './shared/log-message.model';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit, DoCheck, AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked {
+export class AppComponent implements OnInit, DoCheck, AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked {  // OnDestroy {
   title = 'exercise3: Directives';
 
   id: number = 0;
@@ -27,9 +38,11 @@ export class AppComponent implements OnInit, DoCheck, AfterContentInit, AfterCon
 
   afterContentCheckedInfo = '';
 
-  afterVieInitInfo = '';
+  afterViewInitInfo = '';
 
   afterViewCheckedInfo = '';
+
+  // onDestroyInfo = '';
 
   @ViewChild('input2')
   templateLocalVariableViaViewChild;
@@ -81,11 +94,21 @@ export class AppComponent implements OnInit, DoCheck, AfterContentInit, AfterCon
   }
 
   ngAfterViewInit() {
-    this.afterVieInitInfo = new Date().toUTCString();
+    // this.afterViewInitInfo = new Date().toUTCString();
+    this.afterViewInitInfo = 'ngAfterViewInit() called';
   }
 
   ngAfterViewChecked() {
     this.afterViewCheckedInfo = new Date().toISOString();
   }
 
+  // It's NOT called when a log-message.component is destroyed from app.component
+  // is that, such ngOnDestroy does NOT happen on app.component, but in log-message.component
+  // ngOnDestroy() {
+  //   this.onDestroyInfo = new Date().toISOString();
+  // }
+
+  destroyOneLogComponent() {
+    this.logs.splice(0, 1);
+  }
 }

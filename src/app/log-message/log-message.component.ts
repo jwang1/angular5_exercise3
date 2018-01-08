@@ -1,4 +1,12 @@
-import {Component, Input, OnInit, OnChanges, SimpleChanges} from '@angular/core';
+import {
+  Component,
+  Input,
+  OnInit,
+  OnChanges,
+  SimpleChanges,
+  OnDestroy
+} from '@angular/core';
+
 import {LogMessage} from '../shared/log-message.model';
 
 @Component({
@@ -6,11 +14,13 @@ import {LogMessage} from '../shared/log-message.model';
   templateUrl: './log-message.component.html',
   styleUrls: ['./log-message.component.css']
 })
-export class LogMessageComponent implements OnInit, OnChanges {
+export class LogMessageComponent implements OnInit, OnChanges, OnDestroy {
   @Input()
   logMsg: LogMessage;
 
   logMsgCheckOnChanges = '';
+
+  onDestroyInfo = '';
 
   constructor() {}
 
@@ -24,5 +34,12 @@ export class LogMessageComponent implements OnInit, OnChanges {
     for (let obj in changes) {
       this.logMsgCheckOnChanges += obj + ': ' +  changes[obj].currentValue.toString();
     }
+  }
+
+  ngOnDestroy() {
+    let msg = 'ngOnDestroy() is called @ ' +  new Date().toISOString();
+    this.onDestroyInfo = msg;
+
+    console.log(msg);
   }
 }

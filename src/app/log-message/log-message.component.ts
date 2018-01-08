@@ -1,6 +1,8 @@
 import {
   Component,
   Input,
+  Output,
+  EventEmitter,
   OnInit,
   OnChanges,
   SimpleChanges,
@@ -18,6 +20,9 @@ export class LogMessageComponent implements OnInit, OnChanges, OnDestroy {
   @Input()
   logMsg: LogMessage;
 
+  @Output('childComponentDestroyed')
+  emitDestroyedMsg: EventEmitter<string> = new EventEmitter<string>();
+
   logMsgCheckOnChanges = '';
 
   onDestroyInfo = '';
@@ -25,7 +30,8 @@ export class LogMessageComponent implements OnInit, OnChanges, OnDestroy {
   constructor() {}
 
   ngOnInit() {
-
+    // too late, when put here?
+    // this.emitDestroyedMsg = new EventEmitter<string>();
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -41,5 +47,9 @@ export class LogMessageComponent implements OnInit, OnChanges, OnDestroy {
     this.onDestroyInfo = msg;
 
     console.log(msg);
+
+    this.emitDestroyedMsg.emit(msg);
   }
+
+
 }

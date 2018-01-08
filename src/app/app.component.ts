@@ -42,7 +42,7 @@ export class AppComponent implements OnInit, DoCheck, AfterContentInit, AfterCon
 
   afterViewCheckedInfo = '';
 
-  // onDestroyInfo = '';
+  onDestroyInfo = '';
 
   @ViewChild('input2')
   templateLocalVariableViaViewChild;
@@ -104,6 +104,7 @@ export class AppComponent implements OnInit, DoCheck, AfterContentInit, AfterCon
 
   // It's NOT called when a log-message.component is destroyed from app.component
   // is that, such ngOnDestroy does NOT happen on app.component, but in log-message.component
+  // *** see the following recordChildComponentOnDestroy(...) method records log-message.component's @Output('childComponentDestroyed')
   // ngOnDestroy() {
   //   this.onDestroyInfo = new Date().toISOString();
   // }
@@ -111,4 +112,9 @@ export class AppComponent implements OnInit, DoCheck, AfterContentInit, AfterCon
   destroyOneLogComponent() {
     this.logs.splice(0, 1);
   }
+
+  recordChildComponentOnDestroy(event: string) {
+    this.onDestroyInfo = event;
+  }
+
 }

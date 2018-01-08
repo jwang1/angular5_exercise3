@@ -36,7 +36,11 @@
 <hr>
 
 
-<exercise3-log-message *ngFor="let log of logs; let i = index" [logMsg]="log"></exercise3-log-message>
+<!-- note the childComponentDestroyed EventEmitter has to be used
+     on the Child-Component where @Output EventEmitter was defined -->
+<exercise3-log-message *ngFor="let log of logs; let i = index" [logMsg]="log"
+                       (childComponentDestroyed)="recordChildComponentOnDestroy($event)"
+></exercise3-log-message>
 
 <hr>
 
@@ -90,8 +94,10 @@
 
 <hr>
 
-<button class="btn-danger" (click)="destroyOneLogComponent()" [disabled]="logs.length === 0"
-  title="disabled until some logs added.">Remove a log component (activate OnDestry)</button>
+<button class="btn-danger"
+        (click)="destroyOneLogComponent()"
+        [disabled]="logs.length === 0"
+        title="disabled until some logs added.">Remove a log component (activate OnDestry)</button>
 
 <div class="form-control">OnDestroy : {{ onDestroyInfo }}</div>
 

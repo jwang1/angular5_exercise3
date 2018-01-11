@@ -6,7 +6,8 @@ import {
   AfterContentInit,
   AfterContentChecked,
   AfterViewInit,
-  AfterViewChecked
+  AfterViewChecked,
+  ElementRef
   // OnDestroy
 } from '@angular/core';
 
@@ -51,6 +52,9 @@ export class AppComponent implements OnInit, DoCheck, AfterContentInit, AfterCon
 
   valTemplateLocalVariableViaViewChild2 = '';
 
+  @ViewChild('heading')
+  templateLocalVarHeading: ElementRef;
+
   onToggle() {
     this.id++;
     this.isDisplay = !this.isDisplay;
@@ -79,6 +83,9 @@ export class AppComponent implements OnInit, DoCheck, AfterContentInit, AfterCon
 
   ngOnInit() {
     this.valTemplateLocalVariableViaViewChild2 = this.templateLocalVariableViaViewChild.nativeElement.value;
+
+    // the templateLocalVariable-heading not here
+    console.log('check heading temp var: (should NOT in ngOnInit) ' + this.templateLocalVarHeading.nativeElement.textContent);
   }
 
   ngDoCheck() {
@@ -96,6 +103,8 @@ export class AppComponent implements OnInit, DoCheck, AfterContentInit, AfterCon
   ngAfterViewInit() {
     // this.afterViewInitInfo = new Date().toUTCString();
     this.afterViewInitInfo = 'ngAfterViewInit() called';
+
+    console.log('check heading temp var: (should be in ngAfterViewInit) ' + this.templateLocalVarHeading.nativeElement.textContent);
   }
 
   ngAfterViewChecked() {

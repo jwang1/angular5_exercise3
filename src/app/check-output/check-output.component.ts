@@ -1,11 +1,22 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  ContentChild,
+  ElementRef,
+  AfterContentInit
+} from '@angular/core';
 
 @Component({
   selector: 'exercise3-check-output',
   templateUrl: './check-output.component.html',
   styleUrls: ['./check-output.component.css']
 })
-export class CheckOutputComponent {
+export class CheckOutputComponent implements AfterContentInit {
+  @ContentChild('paragraph')
+  paragrph: ElementRef;
+
   @Input('fromParent')
   public parentInput: string;
 
@@ -21,6 +32,10 @@ export class CheckOutputComponent {
 
   onInput() {
     this.inputEmitter.emit(this.userInput);
+  }
+
+  ngAfterContentInit() {
+    console.log('contentchild only available in ngAfterContentInit, not in the earlier phase of ngOnInit ... ' + this.paragrph.nativeElement.textContent);
   }
 
   emitMyEvent() {

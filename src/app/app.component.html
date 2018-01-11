@@ -9,6 +9,7 @@
 
 <div>Showing the heading stuff: </div>
 
+
 <hr>
 
 <button (click)="onToggle()" class="btn-primary">Display Detail (also kick off onChanges check on @Input)</button>
@@ -54,7 +55,9 @@
   (onCheckOutputChange)="callback($event)"
   (onButtonClickedEmitter)="checkChildComponentBtnClick($event)"
   [fromParent]="logSomeInfo()"
-></exercise3-check-output>
+>
+  <p #paragraph>Template Variable inside child-component, not accessed by @ViewChild, but by @ContentChild</p>
+</exercise3-check-output>
 
 <hr>
 
